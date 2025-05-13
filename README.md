@@ -8,12 +8,6 @@ Coming soon to [axceltidalgo.com](https://axceltidalgo.com) — or visit the Git
 
 ## 📸 Preview
 
-## 🛠️ Tech Stack
-
-- HTML5
-- CSS3 (vanilla)
-- GitHub Pages (for hosting)
-
 ## 🧾 License
 
 This project is licensed under the [MIT License](LICENSE).
