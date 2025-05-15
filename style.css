@@ -271,6 +271,20 @@ html, body {
   line-height: 1.4;
 }
 
+/* highlight & centre project titles + subtitles */
+.project-card h5.card-title {
+  color: #18181b;      /* Bootstrap primary blue */
+  margin-bottom: 0rem;    /* remove extra gap */
+  font-weight: bold;
+}
+
+.project-card h5.card-title + small {
+  display: block;          
+  color: #474747 !important;
+  margin-top: 0rem;
+  font-style: italic;
+}
+
 /* GitHub button */
 
 .btn-outline-dark {
