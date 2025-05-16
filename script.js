@@ -32,6 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // checkAndShowMobileWarning();
     // window.addEventListener('resize', checkAndShowMobileWarning);
 
+    // — TYPEWRITER EFFECT (JS) —
+    const typeEl = document.getElementById('typewriter');
+    const fullText = typeEl.textContent.trim();
+    typeEl.textContent = '';
+    let charIndex = 0;
+    const speed = 50;
+    function typeWriter() {
+        if (charIndex < fullText.length) {
+        typeEl.textContent += fullText.charAt(charIndex++);
+        setTimeout(typeWriter, speed);
+        }
+    }
+    typeWriter();
+
     // -- VARIABLES & ELEMENTS --
     let currentSlide = 0;
     const slides   = document.querySelectorAll('.slide');
