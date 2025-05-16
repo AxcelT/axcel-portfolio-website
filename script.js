@@ -1,36 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
     // — MOBILE DETECTION & OVERLAY TOGGLE —
-    function isMobileDevice() {
+    // function isMobileDevice() {
         // modern API
-        if (navigator.userAgentData && typeof navigator.userAgentData.mobile === 'boolean') {
-            return navigator.userAgentData.mobile;
-        }
-        // UA string fallback
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-        const mobileRegex = /Android|Mobi|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-        if (mobileRegex.test(ua)) {
-            return true;
-        }
+        // if (navigator.userAgentData && typeof navigator.userAgentData.mobile === 'boolean') {
+        //     return navigator.userAgentData.mobile;
+        // }
+        // // UA string fallback
+        // const ua = navigator.userAgent || navigator.vendor || window.opera;
+        // const mobileRegex = /Android|Mobi|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+        // if (mobileRegex.test(ua)) {
+        //     return true;
+        // }
         // touch-first check
-        return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    }
+    //     return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    // }
 
-    function checkAndShowMobileWarning() {
-        const warning = document.getElementById('mobile-warning');
-        const content = document.getElementById('site-content');
+    // function checkAndShowMobileWarning() {
+    //     const warning = document.getElementById('mobile-warning');
+    //     const content = document.getElementById('site-content');
 
-        if (isMobileDevice()) {
-            warning.classList.remove('hidden');
-            content.classList.add('hidden');
-        } else {
-            warning.classList.add('hidden');
-            content.classList.remove('hidden');
-        }
-    }
+    //     if (isMobileDevice()) {
+    //         warning.classList.remove('hidden');
+    //         content.classList.add('hidden');
+    //     } else {
+    //         warning.classList.add('hidden');
+    //         content.classList.remove('hidden');
+    //     }
+    // }
 
     // Run on initial load + whenever viewport changes
-    checkAndShowMobileWarning();
-    window.addEventListener('resize', checkAndShowMobileWarning);
+    // checkAndShowMobileWarning();
+    // window.addEventListener('resize', checkAndShowMobileWarning);
 
     // -- VARIABLES & ELEMENTS --
     let currentSlide = 0;
