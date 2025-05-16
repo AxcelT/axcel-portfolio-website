@@ -100,7 +100,8 @@ html, body {
   border-radius: 6px;
   font-family: monospace;
   font-size: 1rem;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .typing {
@@ -433,5 +434,19 @@ html, body {
   /* hide the “mobile only” overlay so content shows */
   #mobile-warning {
     display: none !important;
+  }
+}
+
+/* small‐screen overrides */
+@media (max-width: 576px) {
+  .code-snippet {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;       /* a bit smaller text */
+  }
+  .typing {
+    white-space: pre-wrap !important;  /* allow wrapping */
+    word-break: break-word;            /* break long lines */
+    animation: none;                   /* disable typing effect if it’s too slow */
+    border-right: none;                /* remove caret */
   }
 }
