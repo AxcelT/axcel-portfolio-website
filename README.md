@@ -3,8 +3,7 @@
 A minimalist personal website that acts as a centralized hub for all my professional links — GitHub, LinkedIn, email, and downloadable CV. Built with HTML and CSS, designed for simplicity and fast access.
 
 ## 🔗 Live Site
-
-Coming soon to [axceltidalgo.com](https://axceltidalgo.com) — or visit the GitHub Pages version once deployed.
+[ajtidalgo.info](https://ajtidalgo.info)
 
 ## 📸 Preview
 
