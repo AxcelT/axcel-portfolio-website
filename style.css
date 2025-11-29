@@ -1,457 +1,280 @@
-/*=========================================
-=            Reset & Base Styles         =
-=========================================*/
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
+/* ----------------------------------------------------
+ * Base / Global
+ * -------------------------------------------------- */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  /* overflow: hidden;  ← remove this so small screens can scroll */
-  overflow: auto;
-  font-family: sans-serif;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-/*=========================================
-=            Slide Container             =
-=========================================*/
-
-.slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* height: 100vh; */
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.6s ease;
+body {
+  font-family: "JetBrains Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 1rem; /* base 16px */
+  line-height: 1.6;
+  background-color: #020617;
+  color: #e5e7eb;
+  font-weight: 400;
 }
 
-/*=========================================
-=                Slide 1                 =
-=========================================*/
+/* ----------------------------------------------------
+ * Layout
+ * -------------------------------------------------- */
 
-#slide1 {
-  background: #18181b;
-  color: #f5f5f5;
-  touch-action: none;
+.page {
+  max-width: 45rem; /* ~720px */
+  margin: 5rem auto 6rem;
+  padding: 0 1.5rem;
 }
 
-.profile-card {
-  max-width: 500px;
-  padding: 2rem;
-  text-align: center;
+.page-section {
+  border-top: 0.0625rem solid rgba(148, 163, 184, 0.35);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-.name {
-  font-size: 2.5rem;
-  margin-bottom: 0.25rem;
+.page-section p {
+  margin: 0 0 0.9rem;
 }
 
-.role {
-  font-size: 1.25rem;
+/* ----------------------------------------------------
+ * Typography / Header
+ * -------------------------------------------------- */
+
+.page-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.4rem;
+  color: #f9fafb;
+}
+
+.page-subtitle {
+  font-size: 1rem;
   color: #9ca3af;
+  margin: 0;
+  font-weight: 400;
+}
+
+.page-header {
   margin-bottom: 1.5rem;
 }
 
-/* Button container: flex layout with gap */
-.btn-container {
+/* Subtle section */
+
+.subtle-section {
+  font-size: 0.97rem;
+}
+
+.section-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------
+ * Contact
+ * -------------------------------------------------- */
+
+.page-contact {
+  font-size: 0.95rem;
+}
+
+.contact-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;       /* adjust this value to increase/decrease spacing */
-  margin-bottom: 0.5rem;  /* extra breathing room below */
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Remove per-button margins if present */
-.btn-container .btn {
-  margin: 0rem 0rem;       /* let the gap handle spacing */
-  padding: .25rem 1rem;
+.contact-label {
+  font-weight: 600;
+  color: #94a3b8;
+  min-width: 5rem;
 }
 
-/* Toggle button for tags (expand/collapse) */
-.more-badge {
-  display: inline-block;
-  background-color: #fff;
-  color:            #000;
-  border:           1px solid #18181b;
-  padding:          0.25rem 0.5rem;
-  border-radius:    0.25rem;
-  cursor:           pointer;
-  transition:       background-color 0.2s, color 0.2s, transform 0.1s;
-}
-.more-badge:hover {
-  background-color: #000;
-  color:            #fff;
-}
-.more-badge:active {
-  transform: scale(0.95);
+.contact-text {
+  color: #e5e7eb;
 }
 
-/* Code snippet */
-
-.code-snippet {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1rem 1.5rem;
-  border-radius: 6px;
-  font-family: monospace;
-  font-size: 1rem;
-  overflow-x: auto;
-  overflow-y: hidden;
+.contact-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-.typing {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 0.15em solid #9ca3af;
+.contact-link,
+.contact-links a {
+  text-decoration: none;
+  border-bottom: 0.0625rem solid transparent;
+  padding-bottom: 0.0625rem;
+  color: #e5e7eb;
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to   { width: 100%; }
-}
-@keyframes blink-caret {
-  50% { border-color: transparent; }
+.contact-links a:hover,
+.contact-link:hover {
+  border-bottom-color: #e5e7eb;
 }
 
-/* Contact info */
+/* ----------------------------------------------------
+ * Navigation
+ * -------------------------------------------------- */
 
-.contact-info {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #9ca3af;
-}
-.contact-info .bi {
-  font-size: 1rem;
-}
-
-/* Scroll-down indicator */
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+.page-nav nav {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  animation: bounce 2s infinite;
-  transition: color 0.2s;
-}
-
-.scroll-indicator .scroll-text {
-  font-family: monospace;
-  color: #f5f5f5 !important;
-  margin-bottom: 0.25rem;
-}
-
-.scroll-indicator .bi {
-  font-size: 1.5rem;
-  color: currentColor;
-}
-
-@keyframes bounce {
-  0%,20%,50%,80%,100% { transform: translate(-50%, 0); }
-  40%                  { transform: translate(-50%, -10px); }
-  60%                  { transform: translate(-50%, -6px); }
-}
-
-/*=========================================
-=                Slide 2                 =
-=========================================*/
-
-#slide2 {
-  background: #fafafa;
-  color:      #18181b;
-  height:     100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display:         flex;
-  flex-direction:  column;
-  align-items:     flex-start;
-  justify-content: flex-start;
-  padding-top: 2rem;
-}
-
-/* Section heading */
-
-#slide2 h2 {
-  color: #111;
-}
-
-/* Project cards */
-
-.project-card {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  transition: none;
-}
-
-.project-card h5 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-  color: #18181b;
-}
-
-/* Tech badges */
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin-top: 0.25rem;
-  align-content: flex-start;
-  min-height: 3.5rem;
-  overflow: hidden;
-}
-
-#slide2 .tags {
-  min-height: 4.5rem;
-  align-items: flex-start;
-}
-
-
-.tags .badge {
-  background: #18181b;
-  color: #f5f5f5;
-  padding: 0.25em 0.5em;
-  font-size: 0.85rem;
-  border: 1px solid #18181b;
-}
-
-/* from .tags .badge and .badge.tech-badge */
-.badge.tech-badge {
-  background: #18181b;
-  color:      #f5f5f5;
-  padding:    0.25em 0.5em;
-  font-size:  0.85rem;
-  border:     1px solid #18181b;
-}
-
-/* plus your toggle-only overrides in .more-badge */
-.more-badge {
-  display: block;          /* own line */
-  margin: 0.5rem 0;        /* gap above & below */
-  width: fit-content;      /* shrink to its content */
-  background-color: #f5f5f5 !important;  
-  color:            #18181b !important;
-  border:           1px solid #18181b;
-  padding:          0.25rem 0.5rem;
-  border-radius:    0.25rem;
-  cursor:           pointer;
-  transition:       background-color 0.2s, color 0.2s, transform 0.1s;
-  margin: 0rem;
-}
-
-.more-badge:hover {
-  background-color: #f5f5f5 !important;
-  color: #18181b !important;
-}
-
-.more-badge:active {
-  transform: scale(0.95);
-}
-
-/* when inside .tags (collapsed state), stay inline */
-.tags .more-badge {
-  display: inline-block;
-}
-
-/* when immediately after .tags (expanded state), block on its own line */
-.tags + .more-badge {
-  display: block;
-  margin: 0.5rem 0;
-}
-/* Description */
-
-.description {
-  flex-grow: 1;
-  min-height: 5rem;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-/* highlight & centre project titles + subtitles */
-.project-card h5.card-title {
-  color: #18181b;      /* Bootstrap primary blue */
-  margin-bottom: 0rem;    /* remove extra gap */
-  font-weight: bold;
-}
-
-.project-card h5.card-title + small {
-  display: block;          
-  color: #474747 !important;
-  margin-top: 0rem;
-  font-style: italic;
-}
-
-/* GitHub button */
-
-.btn-outline-dark {
-  border-color: #18181b;
-  color: #18181b;
-  transition: background-color 0.2s, color 0.2s;
-}
-.btn-outline-dark:hover {
-  background-color: #18181b !important;
-  color: #f5f5f5 !important;
-}
-
-/*=========================================
-=                Navbar                  =
-=========================================*/
-
-#mainNav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  background: transparent;
-  z-index: 1000;
-}
-
-.nav-list {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0.5rem 0;
-  list-style: none;
+  gap: 0.4rem;
+  font-size: 0.95rem;
 }
 
 .nav-item {
-  margin: 0 1rem;
-}
-
-.nav-link {
-  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   text-decoration: none;
-  color: var(--nav-text, #f5f5f5);
-  padding: 0.25rem 0;
-  transition: color 0.2s, transform 0.1s;
-}
-#mainNav.nav-light .nav-link {
-  --nav-text: #18181b;
+  color: #e5e7eb;
+  padding: 0.1rem 0;
+  font-weight: 500;
 }
 
-.nav-link:hover {
-  color: var(--nav-hover, rgba(255,255,255,0.2));
-}
-.nav-link:active {
-  transform: scale(0.95);
+.nav-item:hover .nav-label {
+  text-decoration: underline;
 }
 
-.nav-link.active {
-  color: var(--active-fg, #18181b);
+.nav-arrow {
+  display: inline-block;
+  width: 1.2rem;
+  font-weight: 600;
+  color: #f97316;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1.5rem;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--indicator-color, #fff);
-  opacity: 0;
-  transition: opacity 0.2s, background 0.2s;
-}
-.nav-link.active::after {
-  opacity: 1;
+/* ----------------------------------------------------
+ * Work Section
+ * -------------------------------------------------- */
+
+.work-item + .work-item {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 0.0625rem solid rgba(148, 163, 184, 0.35);
 }
 
-/* Light/Dark text override */
-
-#mainNav.nav-dark .nav-link {
-  color: #f5f5f5 !important;
-}
-#mainNav.nav-light .nav-link {
-  color: #18181b !important;
-}
-#mainNav.nav-light .nav-link:hover {
-  background-color: rgba(0,0,0,0.05) !important;
+.work-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+  color: #f97316;
 }
 
-/*=========================================
-=             Badge Animations           =
-=========================================*/
-
-@keyframes badgeSlideIn {
-  from { opacity: 0; transform: translateX(-20px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes badgeSlideOut {
-  from { opacity: 1; transform: translateX(0); }
-  to   { opacity: 0; transform: translateX(20px); }
-}
-.slide-in {
-  animation: badgeSlideIn 0.3s ease forwards;
-}
-.slide-out {
-  animation: badgeSlideOut 0.3s ease forwards;
+.work-meta {
+  margin: 0 0 0.3rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
 }
 
-/*=========================================
-=              Utility Classes           =
-=========================================*/
-
-/* Adjust code indent hack */
-.code-snippet .typing {
-  text-indent: 0 !important;
-  padding-left: 0 !important;
+.work-body {
+  margin: 0 0 0.4rem;
 }
 
-@media (max-width: 768px) {
-  /* bring nav into the normal document flow */
-  #mainNav {
-    position: relative;
+/* bullet points */
+.work-points {
+  margin: 0.4rem 0 0;
+  padding-left: 1.4rem;
+}
+
+.work-points li {
+  margin-bottom: 0.35rem;
+}
+
+.last-updated {
+  margin-top: 2.25rem;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* ----------------------------------------------------
+ * Projects Section — Matching Work Style
+ * -------------------------------------------------- */
+
+.projects-item + .projects-item {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 0.0625rem solid rgba(148, 163, 184, 0.35);
+}
+
+.projects-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+  color: #f97316; /* orange accent */
+}
+
+.projects-meta {
+  margin: 0 0 0.3rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* short bullet style */
+.projects-points {
+  margin: 0.4rem 0 0;
+  padding-left: 1.4rem;
+}
+
+.projects-points li {
+  margin-bottom: 0.35rem;
+}
+
+/* ----------------------------------------------------
+ * Inline Links
+ * -------------------------------------------------- */
+
+.work-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 0.0625rem solid rgba(249, 250, 251, 0.3);
+  padding-bottom: 0.0625rem;
+  color: #e5e7eb;
+}
+
+.work-link:hover {
+  border-bottom-color: #f9fafb;
+}
+
+/* ----------------------------------------------------
+ * Now page list
+ * -------------------------------------------------- */
+
+.now-list {
+  padding-left: 1.4rem;
+}
+
+.now-list li {
+  margin-bottom: 0.9rem;
+}
+
+/* ----------------------------------------------------
+ * Responsive
+ * -------------------------------------------------- */
+
+@media (max-width: 40rem) { /* was 640px */
+  .page {
+    margin: 3rem auto 4rem;
+    padding: 0 1rem;
   }
 
-  /* shrink and pad the profile card */
-  .profile-card {
-    max-width: 100%;
-    padding: 1rem;
-  }
-  .name {
+  .page-title {
     font-size: 2rem;
-  }
-  .role {
-    font-size: 1rem;
-  }
-
-  /* tighten button gaps */
-  .btn-container {
-    gap: 0.25rem;
-  }
-
-  /* let slide 2 wrap naturally */
-  #slide2 .row {
-    row-gap: 1rem;
-  }
-
-  /* hide the “mobile only” overlay so content shows */
-  #mobile-warning {
-    display: none !important;
-  }
-}
-
-/* small‐screen overrides */
-@media (max-width: 576px) {
-  .code-snippet {
-    padding: 0.75rem 1rem;
-    font-size: 0.875rem;       /* a bit smaller text */
-  }
-  .typing {
-    white-space: pre-wrap !important;  /* allow wrapping */
-    word-break: break-word;            /* break long lines */
-    animation: none;                   /* disable typing effect if it’s too slow */
-    border-right: none;                /* remove caret */
   }
 }
