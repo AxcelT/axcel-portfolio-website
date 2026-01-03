@@ -163,12 +163,6 @@ body {
  * Work Section
  * -------------------------------------------------- */
 
-.work-item + .work-item {
-  margin-top: 1.75rem;
-  padding-top: 1.25rem;
-  border-top: 0.0625rem solid rgba(148, 163, 184, 0.35);
-}
-
 .work-title {
   font-size: 1.2rem; /* Increased size for titles */
   font-weight: 600;
@@ -323,12 +317,17 @@ body {
  * Hover Micro-interactions
  * -------------------------------------------------- */
 .work-item, .projects-item {
-  transition: all 0.2s ease;
-  border-left: 2px solid transparent;
+  border-left: 2px solid transparent; 
+  transition: border-left-color 0.2s ease;
 }
 
+.work-item > *, .projects-item > * {
+  transition: transform 0.2s ease;
+}
 .work-item:hover, .projects-item:hover {
-  transform: translateX(10px);
   border-left-color: #f97316;
-  padding-left: 1rem;
+}
+
+.work-item:hover > *, .projects-item:hover > * {
+  transform: translateX(15px);
 }
