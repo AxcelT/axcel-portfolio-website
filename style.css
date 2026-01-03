@@ -253,7 +253,7 @@ body {
   color: #e5e7eb;
 }
 
-.work-link:hover {
+.git-link:hover, .work-link:hover {
   border-bottom-color: #f9fafb;
 }
 
