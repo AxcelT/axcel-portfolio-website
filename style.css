@@ -354,7 +354,7 @@ body {
 /* --- Mobile Adjustment --- */
 @media (max-width: 45rem) {
   .timeline-item.timeline-note::before {
-     left: -1.81rem;
+     left: -1.93rem;
   }
 }
 
@@ -380,7 +380,7 @@ body {
   }
   
   .timeline-item::before {
-     left: -1.96rem;
+     left: -2.09rem;
   }
 
   .timeline-date {
