@@ -69,12 +69,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Subtle section */
-
-.subtle-section {
-  /* Inherits base 1rem */
-}
-
 .last-updated {
   margin-top: 2.25rem;
   color: #9ca3af;
@@ -83,10 +77,6 @@ body {
 /* ----------------------------------------------------
  * Contact
  * -------------------------------------------------- */
-
-.page-contact {
-   /* Inherits base 1rem */
-}
 
 .contact-row {
   display: flex;
@@ -168,7 +158,7 @@ body {
 }
 
 /* ----------------------------------------------------
- * Universal Timeline & Items
+ * Main Timeline & Items
  * -------------------------------------------------- */
 
 /* The Container */
@@ -197,7 +187,7 @@ body {
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: -2.46rem; 
+  left: -2.56rem; 
   top: 0.25rem;
   width: 0.8rem;
   height: 0.8rem;
@@ -301,6 +291,71 @@ body {
 /* Highlight Date */
 .timeline-item:hover .timeline-date {
   color: #f97316;
+}
+/* ----------------------------------------------------
+ * Minor Timeline Note
+ * -------------------------------------------------- */
+
+/* Base container modifications */
+.timeline-item.timeline-note {
+  margin-bottom: 2rem; 
+  min-height: auto;
+}
+
+/* Smaller, subtle dot */
+.timeline-item.timeline-note::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-width: 0.1rem;
+  left: -2.38rem;       /* Recalculated center */
+  top: 0.35rem;         /* Slight vertical adjustment to align with text */
+  background-color: #1e293b; 
+  border-color: #334155;
+}
+
+/* The actual note text styling (Right side) */
+.timeline-note-text {
+  margin: 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #64748b; /* Muted slate */
+}
+
+/* --- NEW: Make the Date Less Observable (Left side) --- */
+.timeline-item.timeline-note .timeline-date {
+  color: #475569;      /* Much darker grey to blend with bg */
+  font-weight: 400;    /* Remove bold */
+  font-size: 0.75rem;  /* Smaller font */
+  letter-spacing: 0;   /* Relax spacing */
+}
+
+/* Make the "to" divider even fainter */
+.timeline-item.timeline-note .timeline-date .date-divider {
+  color: #334155;
+}
+
+/* --- Override Interactions (No Hover Effects) --- */
+
+.timeline-item.timeline-note:hover > *:not(.timeline-date) {
+  transform: none; /* No slide */
+}
+
+.timeline-item.timeline-note:hover::before {
+  transform: none; /* No dot expansion */
+  background-color: #1e293b;
+  border-color: #334155;
+  box-shadow: none;
+}
+
+.timeline-item.timeline-note:hover .timeline-date {
+  color: #475569; /* Prevent date from lighting up orange on hover */
+}
+
+/* --- Mobile Adjustment --- */
+@media (max-width: 45rem) {
+  .timeline-item.timeline-note::before {
+     left: -1.81rem;
+  }
 }
 
 /* ----------------------------------------------------
