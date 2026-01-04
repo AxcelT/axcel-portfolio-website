@@ -75,13 +75,9 @@ body {
   /* Inherits base 1rem */
 }
 
-.section-title {
-  font-size: 1rem; 
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #94a3b8;
-  margin: 0 0 0.75rem;
-  font-weight: 600;
+.last-updated {
+  margin-top: 2.25rem;
+  color: #9ca3af;
 }
 
 /* ----------------------------------------------------
@@ -160,103 +156,6 @@ body {
 }
 
 /* ----------------------------------------------------
- * Work Section
- * -------------------------------------------------- */
-
-.work-title {
-  font-size: 1.2rem; /* Increased size for titles */
-  font-weight: 600;
-  margin: 0 0 0.2rem;
-  color: #f97316;
-}
-
-.work-meta {
-  margin: 0 0 0.3rem;
-  color: #9ca3af;
-}
-
-.work-body {
-  margin: 0 0 0.4rem;
-}
-
-/* bullet points */
-.work-points {
-  margin: 0.6rem 0 0;    
-  padding-left: 1.2rem;    
-}
-
-.work-points li {
-  line-height: 1.3;        
-  margin-bottom: 0.75rem;
-}
-
-.last-updated {
-  margin-top: 2.25rem;
-  color: #9ca3af;
-}
-
-/* ----------------------------------------------------
- * Projects Section — Matching Work Style
- * -------------------------------------------------- */
-
-.projects-item + .projects-item {
-  margin-top: 1.75rem;
-  padding-top: 1.25rem;
-  border-top: 0.0625rem solid rgba(148, 163, 184, 0.35);
-}
-
-.projects-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 0.2rem;
-  color: #f97316; /* orange accent */
-}
-
-.projects-meta {
-  margin: 0 0 0.3rem;
-  color: #9ca3af;
-}
-
-/* short bullet style */
-.projects-points {
-  margin: 0.4rem 0 0;
-  padding-left: 1.4rem;
-}
-
-.projects-points li {
-  margin-bottom: 0.35rem;
-}
-
-.projects-collaborators {
-  margin-top: 0.8rem;
-  margin-bottom: 0.5rem;
-  color: #9ca3af; 
-}
-
-/* ----------------------------------------------------
- * Inline Links
- * -------------------------------------------------- */
-
-.git-link {
-  display: inline-block;
-  text-decoration: none;
-  border-bottom: 0.0625rem solid rgba(249, 250, 251, 0.3);
-  padding-bottom: 0.0625rem;
-  color: #e5e7eb;
-}
-.work-link {
-  display: inline-block;
-  text-decoration: none;
-  border-bottom: 0.0625rem solid rgba(249, 250, 251, 0.3);
-  padding-bottom: 0.0625rem;
-  color: #e5e7eb;
-}
-
-.git-link:hover, .work-link:hover {
-  border-bottom-color: #f9fafb;
-}
-
-/* ----------------------------------------------------
  * Now page list
  * -------------------------------------------------- */
 
@@ -266,180 +165,6 @@ body {
 
 .now-list li {
   margin-bottom: 0.9rem;
-}
-
-/* ----------------------------------------------------
- * Responsive
- * -------------------------------------------------- */
-
-@media (max-width: 40rem) { 
-  .page {
-    margin: 3rem auto 4rem;
-    padding: 0 1rem;
-  }
-
-  .page-title {
-    font-size: 2rem;
-  }
-}
-
-/* ----------------------------------------------------
- * Uncategorized
- * -------------------------------------------------- */
-
- .highlight {
-  color: #6f9bf1; /* blue/orange accent */
-  font-weight: 600;
-  font-style: italic;
-}
-
-/* ----------------------------------------------------
- * Page Load Animation (Fade & Slide)
- * -------------------------------------------------- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(1rem); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.page-header, .page-section, .page-contact {
-  opacity: 0;
-  animation: fadeInUp 0.2s ease-out forwards;
-}
-
-/* Staggered delays (Total sequence ~0.5s) */
-.page-header { animation-delay: 0s; }
-.page-section:not(.page-nav):not(.page-contact) { animation-delay: 0.1s; }
-.page-nav { animation-delay: 0.2s; }
-.page-contact { animation-delay: 0.3s; }
-
-/* ----------------------------------------------------
- * Hover Micro-interactions
- * -------------------------------------------------- */
-.work-item, .projects-item {
-  border-left: 2px solid transparent; 
-  transition: border-left-color 0.2s ease;
-}
-
-.work-item > *, .projects-item > * {
-  transition: transform 0.2s ease;
-}
-.work-item:hover, .projects-item:hover {
-  border-left-color: #f97316;
-}
-
-.work-item:hover > *, .projects-item:hover > * {
-  transform: translateX(15px);
-}
-/* ----------------------------------------------------
- * Timeline Upgrade (Split Date View)
- * -------------------------------------------------- */
-
-.timeline {
-  position: relative;
-  border-left: 0.125rem solid rgba(148, 163, 184, 0.2);
-  margin-left: 8.5rem; 
-  padding-left: 2rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-/* Override default item styles inside timeline */
-.timeline .work-item,
-.timeline .projects-item {
-  position: relative;
-  border-left: none;      /* Remove old hover strip */
-  border-top: none;       /* Remove project separator lines */
-  padding-left: 0;
-  padding-top: 0;
-  margin-bottom: 3rem;
-  margin-top: 0 !important; /* Force reset of project margins */
-}
-
-/* The Timeline Dot */
-.timeline .work-item::before,
-.timeline .projects-item::before {
-  content: "";
-  position: absolute;
-  left: -2.46rem; 
-  top: 0.25rem;
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-  border: 0.125rem solid #9ca3af;
-  background-color: #020617;
-  transition: all 0.2s ease;
-  z-index: 10;
-}
-
-/* The Date - Split View */
-.timeline-date {
-  position: absolute;
-  right: 100%; 
-  top: 0; 
-  width: 8rem;
-  padding-right: 2.5rem;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Left Align */
-  text-align: left;
-  
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #94a3b8;
-  line-height: 1.4;
-  transition: color 0.2s ease;
-}
-
-.date-divider {
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: #64748b;
-  margin: 0.1rem 0;
-}
-
-/* Hover Effects */
-.timeline .work-item:hover::before,
-.timeline .projects-item:hover::before {
-  background-color: #f97316;
-  border-color: #f97316;
-  transform: scale(1.3);
-  box-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
-}
-
-.timeline .work-item:hover .timeline-date,
-.timeline .projects-item:hover .timeline-date {
-  color: #f97316;
-  transform: none; /* Prevent date from sliding */
-}
-
-/* Mobile Response */
-@media (max-width: 45rem) {
-  .timeline {
-    margin-left: 0.5rem;
-    padding-left: 1.5rem;
-  }
-  
-  .timeline .work-item::before,
-  .timeline .projects-item::before {
-     left: -1.96rem;
-  }
-
-  .timeline-date {
-    position: static;
-    display: block;
-    text-align: left;
-    padding-right: 0;
-    margin-bottom: 0.2rem;
-    width: auto;
-    font-size: 0.8rem;
-    color: #f97316;
-  }
-  
-  .date-divider {
-      display: inline-block;
-      margin: 0 0.3rem;
-  }
 }
 
 /* ----------------------------------------------------
@@ -456,7 +181,7 @@ body {
   padding-bottom: 0.5rem;
 }
 
-/* The Item (formerly work-item/projects-item) */
+/* The Item */
 .timeline-item {
   position: relative;
   margin-bottom: 3rem;
@@ -554,9 +279,7 @@ body {
   border-bottom-color: #f9fafb;
 }
 
-/* ----------------------------------------------------
- * Interactions
- * -------------------------------------------------- */
+/* Interactions */
 
 /* Slide content right on hover */
 .timeline-item > *:not(.timeline-date) {
@@ -581,8 +304,19 @@ body {
 }
 
 /* ----------------------------------------------------
- * Responsive / Mobile
+ * Responsive
  * -------------------------------------------------- */
+
+@media (max-width: 40rem) { 
+  .page {
+    margin: 3rem auto 4rem;
+    padding: 0 1rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+}
 
 @media (max-width: 45rem) {
   .timeline {
@@ -615,3 +349,32 @@ body {
     transform: none;
   }
 }
+
+/* ----------------------------------------------------
+ * Uncategorized
+ * -------------------------------------------------- */
+
+ .highlight {
+  color: #6f9bf1; /* blue/orange accent */
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* ----------------------------------------------------
+ * Page Load Animation (Fade & Slide)
+ * -------------------------------------------------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-header, .page-section, .page-contact {
+  opacity: 0;
+  animation: fadeInUp 0.2s ease-out forwards;
+}
+
+/* Staggered delays (Total sequence ~0.5s) */
+.page-header { animation-delay: 0s; }
+.page-section:not(.page-nav):not(.page-contact) { animation-delay: 0.1s; }
+.page-nav { animation-delay: 0.2s; }
+.page-contact { animation-delay: 0.3s; }
