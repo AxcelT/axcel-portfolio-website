@@ -441,3 +441,177 @@ body {
       margin: 0 0.3rem;
   }
 }
+
+/* ----------------------------------------------------
+ * Universal Timeline & Items
+ * -------------------------------------------------- */
+
+/* The Container */
+.timeline {
+  position: relative;
+  border-left: 0.125rem solid rgba(148, 163, 184, 0.2);
+  margin-left: 8.5rem; 
+  padding-left: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* The Item (formerly work-item/projects-item) */
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  border-left: 2px solid transparent; 
+  transition: border-left-color 0.2s ease;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* The Timeline Dot */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.46rem; 
+  top: 0.25rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  border: 0.125rem solid #9ca3af;
+  background-color: #020617;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+/* The Date (Split View) */
+.timeline-date {
+  position: absolute;
+  right: 100%; 
+  top: 0; 
+  width: 8rem;
+  padding-right: 2.5rem;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.date-divider {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #64748b;
+  margin: 0.1rem 0;
+}
+
+/* Typography & Content */
+.timeline-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+  color: #f97316; /* Orange accent */
+}
+
+.timeline-meta {
+  margin: 0 0 0.3rem;
+  color: #9ca3af;
+}
+
+/* Bullet Points */
+.timeline-points {
+  margin: 0.6rem 0 0;    
+  padding-left: 1.2rem;    
+}
+
+.timeline-points li {
+  line-height: 1.3;        
+  margin-bottom: 0.75rem;
+}
+
+/* Footer (Collaborators, extra info) */
+.timeline-footer {
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  color: #9ca3af; 
+}
+
+/* Links inside timeline */
+.timeline-link {
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 0.0625rem solid rgba(249, 250, 251, 0.3);
+  padding-bottom: 0.0625rem;
+  color: #e5e7eb;
+}
+
+.timeline-link:hover {
+  border-bottom-color: #f9fafb;
+}
+
+/* ----------------------------------------------------
+ * Interactions
+ * -------------------------------------------------- */
+
+/* Slide content right on hover */
+.timeline-item > *:not(.timeline-date) {
+  transition: transform 0.2s ease;
+}
+
+.timeline-item:hover > *:not(.timeline-date) {
+  transform: translateX(15px);
+}
+
+/* Highlight Dot */
+.timeline-item:hover::before {
+  background-color: #f97316;
+  border-color: #f97316;
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+}
+
+/* Highlight Date */
+.timeline-item:hover .timeline-date {
+  color: #f97316;
+}
+
+/* ----------------------------------------------------
+ * Responsive / Mobile
+ * -------------------------------------------------- */
+
+@media (max-width: 45rem) {
+  .timeline {
+    margin-left: 0.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .timeline-item::before {
+     left: -1.96rem;
+  }
+
+  .timeline-date {
+    position: static;
+    display: block;
+    text-align: left;
+    padding-right: 0;
+    margin-bottom: 0.2rem;
+    width: auto;
+    font-size: 0.8rem;
+    color: #f97316; /* Always distinct on mobile */
+  }
+  
+  .date-divider {
+      display: inline-block;
+      margin: 0 0.3rem;
+  }
+  
+  /* Disable slide effect on mobile for better UX */
+  .timeline-item:hover > *:not(.timeline-date) {
+    transform: none;
+  }
+}
