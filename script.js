@@ -20,7 +20,7 @@ const PORTFOLIO_DATA = {
             socials: [
                 { label: "GitHub", url: "https://github.com/AxcelT" },
                 { label: "LinkedIn", url: "https://www.linkedin.com/in/axcel-justin-tidalgo-1a3940217/" },
-                { label: "CV", url: "AXCEL_TIDALGO_CV_December_2025.pdf" }
+                { label: "CV", url: "AXCEL_TIDALGO_CV_JAN2026.pdf" }
             ]
         }
     },
@@ -60,7 +60,7 @@ const PORTFOLIO_DATA = {
             },
             {
                 date: "Dec 2022",
-                endDate: "Sep 2023",
+                endDate: "Dec 2023",
                 title: "NFT & Web Integration Developer",
                 meta: "Freelance · Remote",
                 points: [
