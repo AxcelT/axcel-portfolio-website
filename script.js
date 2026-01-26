@@ -1,7 +1,8 @@
 /**
- * Data definitions for the portfolio content.
- * This object stores the text and structure for the different views (Home, Work, Education, etc.),
- * separating the content from the HTML structure.
+ * DATA CONFIGURATION
+ * Stores all static content for the portfolio views (Home, Work, Education, Projects, Now).
+ * Separates content from logic to allow easy text updates.
+ * Each key corresponds to a valid route hash.
  */
 const PORTFOLIO_DATA = {
     home: {
@@ -119,23 +120,24 @@ const PORTFOLIO_DATA = {
     }
 };
 
-/* Initializer */
+/**
+ * INITIALIZATION & ROUTING
+ * Manages the application lifecycle and navigation.
+ * Detects URL hash changes to switch views (Home, Work, etc.).
+ * Clears the container and scrolls to top on every route change.
+ */
 document.addEventListener("DOMContentLoaded", () => {
     const app = document.getElementById("app");
     handleRoute();
     window.addEventListener("hashchange", handleRoute);
 });
 
-/* Determines which page to render based on the current window hash. */
 function handleRoute() {
     const hash = window.location.hash.replace("#", "") || "home";
     const app = document.getElementById("app");
 
-    // Clears the current content to prepare for the new view
     app.innerHTML = "";
     
-    // Resets the animation state by removing and re-adding the class logic implicitly during render
-    // or we can just render the new HTML which triggers the CSS animations.   
     switch (hash) {
         case "work":
             renderTimelinePage(app, "work");
@@ -155,10 +157,45 @@ function handleRoute() {
             break;
     }
     
-    // Scrolls to top on route change for a natural page-load feel
     window.scrollTo(0, 0);
 }
 
+/**
+ * UTILITY: DURATION HELPER
+ * Calculates the time difference between a start date and an end date.
+ * Handles 'Present' as the current date.
+ * Adjusts year/month calculation to account for negative month differences.
+ * Returns a formatted string (e.g., '1 yr 2 mos') for the timeline display.
+ */
+function getDuration(startDateStr, endDateStr) {
+    const start = new Date(startDateStr);
+    const end = endDateStr === "Present" ? new Date() : new Date(endDateStr);
+
+    let years = end.getFullYear() - start.getFullYear();
+    let months = end.getMonth() - start.getMonth();
+
+    if (months < 0) {
+        years -= 1;
+        months += 12;
+    }
+
+    const yLabel = years === 1 ? "yr" : "yrs";
+    const mLabel = months === 1 ? "mo" : "mos";
+
+    let duration = "";
+    if (years > 0) duration += `${years} ${yLabel} `;
+    if (months > 0 || years === 0) duration += `${months} ${mLabel}`;
+
+    return duration.trim();
+}
+
+/**
+ * VIEW RENDERERS
+ * Constructs HTML for specific pages using the data object.
+ * renderHomePage: Builds the landing page with navigation links.
+ * renderTimelinePage: Builds Work/Education/Project lists and injects duration string if applicable.
+ * renderNowPage: Builds the 'Now' page with a list of current focuses.
+ */
 function renderHomePage(container) {
     const data = PORTFOLIO_DATA.home;
     
@@ -224,9 +261,14 @@ function renderTimelinePage(container, key) {
             `;
         }
 
-        // Handles standard timeline items
+        let durationHTML = "";
+        if (item.endDate) {
+            const duration = getDuration(item.date, item.endDate);
+            durationHTML = `<span class="date-duration">(${duration})</span>`;
+        }
+
         const dateHTML = item.endDate 
-            ? `<span>${item.date}</span><span class="date-divider">to</span><span>${item.endDate}</span>`
+            ? `<span>${item.date}</span><span class="date-divider">to</span><span>${item.endDate}</span><br/>${durationHTML}`
             : `<span>${item.date}</span>`;
 
         const pointsHTML = item.points 
@@ -281,7 +323,6 @@ function renderTimelinePage(container, key) {
     container.innerHTML = html;
 }
 
-/* Renders the 'Now' page. */
 function renderNowPage(container) {
     const data = PORTFOLIO_DATA.now;
     
