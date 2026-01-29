@@ -433,3 +433,90 @@ body {
 .page-section:not(.page-nav):not(.page-contact) { animation-delay: 0.1s; }
 .page-nav { animation-delay: 0.2s; }
 .page-contact { animation-delay: 0.3s; }
+
+/* ----------------------------------------------------
+ * Intro Animation (Transform Effect)
+ * -------------------------------------------------- */
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #020617;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeOutOverlay 0.5s ease-out 2.0s forwards;
+  pointer-events: none;
+}
+
+.intro-wrapper {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  
+  animation: snapLowerCase 0.01s linear 1.0s forwards;
+}
+
+/* Letters that stay (A, J, Tidalgo) */
+.char-keep {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* Letters that disappear (xcel, ustin, spaces) */
+.char-collapse {
+  display: inline-block;
+  overflow: hidden;
+  white-space: pre;
+  opacity: 1;
+  max-width: 6ch;
+  
+  animation: collapseText 0.4s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards;
+}
+
+/* The .info extension */
+.domain-ext {
+  display: inline-block;
+  overflow: hidden;
+  white-space: pre;
+  opacity: 0;
+  max-width: 0;
+  color: #6f9bf1; 
+  
+  animation: expandText 0.4s cubic-bezier(0.65, 0, 0.35, 1) 1.0s forwards;
+}
+
+/* --- Keyframes --- */
+@keyframes collapseText {
+  to {
+    max-width: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes expandText {
+  to {
+    max-width: 6ch;
+    opacity: 1;
+  }
+}
+
+@keyframes snapLowerCase {
+  to {
+    text-transform: lowercase;
+  }
+}
+
+@keyframes fadeOutOverlay {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
