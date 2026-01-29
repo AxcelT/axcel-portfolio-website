@@ -262,13 +262,20 @@ function renderTimelinePage(container, key) {
         }
 
         let durationHTML = "";
-        if (item.endDate) {
+        if (item.endDate && key !== "education") {
             const duration = getDuration(item.date, item.endDate);
-            durationHTML = `<span class="date-duration">(${duration})</span>`;
+            if (duration) {
+                durationHTML = `<span class="date-duration">(${duration})</span>`;
+            }
+        }
+
+        let divider = "to";
+        if (key === "education" && item.date === "Graduated") {
+            divider = "in";
         }
 
         const dateHTML = item.endDate 
-            ? `<span>${item.date}</span><span class="date-divider">to</span><span>${item.endDate}</span><br/>${durationHTML}`
+            ? `<span>${item.date}</span><span class="date-divider">${divider}</span><span>${item.endDate}</span><br/>${durationHTML}`
             : `<span>${item.date}</span>`;
 
         const pointsHTML = item.points 
@@ -361,7 +368,6 @@ function renderNowPage(container) {
 document.addEventListener("DOMContentLoaded", () => {
     const app = document.getElementById("app");
     
-    // Remove overlay after animation (4000ms)
     const introOverlay = document.getElementById("intro-overlay");
     if (introOverlay) {
         setTimeout(() => {
