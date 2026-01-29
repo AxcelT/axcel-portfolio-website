@@ -357,3 +357,18 @@ function renderNowPage(container) {
 
     container.innerHTML = html;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const app = document.getElementById("app");
+    
+    // Remove overlay after animation (4000ms)
+    const introOverlay = document.getElementById("intro-overlay");
+    if (introOverlay) {
+        setTimeout(() => {
+            introOverlay.remove();
+        }, 2500);
+    }
+
+    handleRoute();
+    window.addEventListener("hashchange", handleRoute);
+});
