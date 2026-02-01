@@ -1,3 +1,4 @@
+// valentines/valentine-scripts.js
 document.addEventListener("DOMContentLoaded", () => {
     const btnYes = document.getElementById("btn-yes");
     const btnNo = document.getElementById("btn-no");
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
         const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
         
-        btnNo.style.position = "absolute";
+        btnNo.style.position = "fixed";
         btnNo.style.left = `${x}px`;
         btnNo.style.top = `${y}px`;
     };
