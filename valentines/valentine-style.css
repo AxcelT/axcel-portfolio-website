@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap");
+
+/* Resets default browser margins and sets base font settings */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #020617;
+  color: #e5e7eb;
+  font-family: "JetBrains Mono", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Centers content and restricts width for readability */
+.container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #f9fafb;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.main-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f43f5e;
+  margin-bottom: 3rem;
+}
+
+/* Flex container for the action buttons */
+.buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  position: relative;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary action button styling */
+.btn-primary {
+  background-color: #f43f5e;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #e11d48;
+  transform: scale(1.05);
+}
+
+/* Secondary/Negative action button styling */
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #475569;
+  color: #94a3b8;
+}
+
+/* Utility class to hide elements */
+.hidden {
+  display: none;
+}
