@@ -78,3 +78,31 @@ body {
 .hidden {
   display: none;
 }
+
+/* Utility class to hide elements */
+.hidden {
+  display: none;
+}
+
+/* Styling for the shoo text pop-up */
+.shoo-text {
+  position: fixed;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: bold;
+  pointer-events: none;
+  animation: floatUp 1s ease-out forwards;
+  z-index: 50;
+}
+
+/* Animation keyframes for the text */
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
