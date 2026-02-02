@@ -31,14 +31,40 @@ document.addEventListener("DOMContentLoaded", () => {
         "may ka data kang opps? hmpf!"
     ];
 
+    /* Defines the celebration logic triggered upon acceptance.
+    This function generates a burst of confetti particles with randomized colors, positions, and animation durations
+    to create a festive visual effect. It creates DOM elements dynamically and ensures they are removed
+    from the document tree once their animation cycle completes to prevent memory leaks.
+    */
+    const celebrate = () => {
+        const colors = ["#f43f5e", "#ec4899", "#d946ef", "#a855f7", "#ffffff"];
+        
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            
+            const bg = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.backgroundColor = bg;
+            
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.animationDuration = Math.random() * 2 + 3 + "s";
+            confetti.style.opacity = Math.random();
+            confetti.style.transform = `scale(${Math.random()})`;
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 5000);
+        }
+    };
+
     /* Establishes event listeners to handle user interactions.
-    The 'yes' button listener transitions the UI to the success state upon activation.
-    Global mouse movement is tracked continuously to update the coordinates used by the repulsion logic,
-    ensuring the physics engine always has the latest cursor position.
+    The 'yes' button listener transitions the UI to the success state and triggers the celebration animation.
+    Global mouse movement is tracked continuously to update the coordinates used by the repulsion logic.
     */
     btnYes.addEventListener("click", () => {
         questionBox.classList.add("hidden");
         successBox.classList.remove("hidden");
+        celebrate();
     });
 
     document.addEventListener("mousemove", (e) => {
