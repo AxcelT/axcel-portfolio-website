@@ -102,8 +102,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* Executes the main physics calculation loop for the button's movement.
     This routine calculates the vector distance between the cursor and the button to determine repulsion force.
-    It applies velocity, friction, and boundary constraints to ensure smooth movement within the viewport,
-    updating the DOM position only when the "floating" state is active to avoid layout thrashing.
+    It applies velocity, friction, and boundary constraints to ensure smooth movement within the viewport.
+    
+    A specific 'Corner Repulsion' check is included to prevent the button from getting stuck in corners.
+    If the button enters a corner zone, an additional force pushes it towards the center of the screen,
+    overriding the standard mouse repulsion if necessary.
     */
     const updatePhysics = () => {
         const rect = btnNo.getBoundingClientRect();
@@ -124,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const activationRadius = 200;
         
+        // Standard Mouse Repulsion
         if (distance < activationRadius) {
             if (!isFloating) {
                 isFloating = true;
@@ -142,15 +146,40 @@ document.addEventListener("DOMContentLoaded", () => {
             if (distance < 80) spawnPhrase();
         }
 
+        // Corner Repulsion Logic
+        // Checks if the button is within the "corner zone" (near both an X and Y boundary)
+        const cornerMargin = 100;
+        const isNearLeft = btnX < cornerMargin;
+        const isNearRight = btnX > window.innerWidth - btnWidth - cornerMargin;
+        const isNearTop = btnY < cornerMargin;
+        const isNearBottom = btnY > window.innerHeight - btnHeight - cornerMargin;
+
+        if ((isNearLeft || isNearRight) && (isNearTop || isNearBottom)) {
+            const screenCenterX = window.innerWidth / 2;
+            const screenCenterY = window.innerHeight / 2;
+            
+            // Apply a strong consistent force towards the center
+            velX += (screenCenterX - centerX) * 0.02;
+            velY += (screenCenterY - centerY) * 0.02;
+        }
+
+        // Physics Update
         velX *= 0.9;
         velY *= 0.9;
 
         btnX += velX;
         btnY += velY;
 
+        // Boundary Collision
         const padding = 20;
-        if (btnX < padding) { btnX = padding; velX *= -0.5; }
-        if (btnY < padding) { btnY = padding; velY *= -0.5; }
+        if (btnX < padding) { 
+            btnX = padding; 
+            velX *= -0.5; 
+        }
+        if (btnY < padding) { 
+            btnY = padding; 
+            velY *= -0.5; 
+        }
         if (btnX + btnWidth > window.innerWidth - padding) { 
             btnX = window.innerWidth - btnWidth - padding; 
             velX *= -0.5; 
