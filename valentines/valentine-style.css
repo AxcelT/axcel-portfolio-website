@@ -94,7 +94,6 @@ body {
 .success-gif {
   max-width: 100%;
   height: auto;
-  width: 300px;
   border-radius: 12px;
   margin: 1rem 0;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -144,5 +143,25 @@ body {
   to { 
     transform: translateY(100vh) rotate(720deg); 
     opacity: 0; 
+  }
+}
+
+/* Responsive keneme */
+@media (max-height: 800px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    margin-bottom: 1rem;
+  }
+  
+  .main-text {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .container {
+    padding: 1rem;
   }
 }
