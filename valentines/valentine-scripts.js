@@ -107,6 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
     A specific 'Corner Repulsion' check is included to prevent the button from getting stuck in corners.
     If the button enters a corner zone, an additional force pushes it towards the center of the screen,
     overriding the standard mouse repulsion if necessary.
+
+    The logic also handles the transition of the button from a static layout position to a fixed absolute position.
+    To prevent layout shifts when the button is removed from the document flow, a placeholder element
+    mimicking the button's dimensions is inserted into the DOM at the original location.
     */
     const updatePhysics = () => {
         const rect = btnNo.getBoundingClientRect();
@@ -131,6 +135,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (distance < activationRadius) {
             if (!isFloating) {
                 isFloating = true;
+
+                // Create a placeholder to occupy the space in the flex container
+                // This prevents the 'Yes' button from shifting when 'No' becomes fixed
+                const placeholder = document.createElement("div");
+                placeholder.style.width = `${btnWidth}px`;
+                placeholder.style.height = `${btnHeight}px`;
+                // Insert the placeholder before the button in the DOM tree
+                btnNo.parentNode.insertBefore(placeholder, btnNo);
+
                 btnNo.style.position = "fixed";
                 btnNo.style.width = `${btnWidth}px`;
                 btnNo.style.height = `${btnHeight}px`;
