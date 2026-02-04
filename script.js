@@ -8,8 +8,7 @@ const PORTFOLIO_DATA = {
     home: {
         title: "Axcel Justin D. Tidalgo",
         subtitle: "Associate Technical Engineer @Finastra",
-        intro: `Hi, I’m <span class="highlight">Axcel</span>. I’m an Associate Technical Engineer at Finastra, working on the Equation core banking system. <span class="highlight">I like chocolate-chip cookies.</span>`,
-        links: [
+        intro: `Hi, I’m <span class="highlight">Axcel</span>. I’m an Associate Technical Engineer at Finastra, working on the Equation core banking system. <span class="highlight">I like <a href="./valentines/index.html" style="text-decoration:none; color:inherit; cursor:text;">chocolate-chip cookies.</a></span>`,        links: [
             { label: "select_projects()", route: "projects" },
             { label: "work_history()", route: "work" },
             { label: "education_&_certifications()", route: "education" },

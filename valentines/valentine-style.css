@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap");
+
+/* Resets default browser margins and sets base font settings */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #020617;
+  color: #e5e7eb;
+  font-family: "JetBrains Mono", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Centers content and restricts width for readability */
+.container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #f9fafb;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.main-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f43f5e;
+  margin-bottom: 3rem;
+}
+
+/* Flex container for the action buttons */
+.buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  position: relative;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary action button styling */
+.btn-primary {
+  background-color: #f43f5e;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #e11d48;
+  transform: scale(1.05);
+}
+
+/* Secondary/Negative action button styling */
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #475569;
+  color: #94a3b8;
+}
+
+/* Utility class to hide elements */
+.hidden {
+  display: none;
+}
+
+/* Styling for the shoo text pop-up */
+.shoo-text {
+  position: fixed;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: bold;
+  pointer-events: none;
+  animation: floatUp 1s ease-out forwards;
+  z-index: 50;
+}
+
+/* Styles the integrated happy cat gif to be responsive and visually distinct */
+.success-gif {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  max-height: 40vh;
+  border-radius: 12px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Animation triggers when the success box becomes visible */
+#success-box:not(.hidden) {
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Confetti particle styling */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #f43f5e;
+  top: -10px;
+  z-index: 100;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+/* Animation keyframes */
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes popIn {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.8) translateY(20px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+@keyframes fall {
+  to { 
+    transform: translateY(100vh) rotate(720deg); 
+    opacity: 0; 
+  }
+}
+
+/* Responsive keneme */
+@media (max-height: 800px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    margin-bottom: 1rem;
+  }
+  
+  .main-text {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+}
